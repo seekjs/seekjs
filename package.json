@@ -1,0 +1,9 @@
+{
+    "name": "seekjs",
+    "version": "1.1.5",
+    "main": "bin/seek.js",
+    "author": {
+        "name": "Li",
+        "email": "61114579@qq.com"
+    }
+}
