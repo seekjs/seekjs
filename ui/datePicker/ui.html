@@ -1,0 +1,40 @@
+﻿<%
+	var today = this.today;
+    var selected = this.selected;
+%>
+<div class="sk-datePicker" style="background:#fff;width:100%;height: 246px;">
+	<div class="sk-datePicker-ymbar">
+		<p class="sk-datePicker-left" data-event="goPrevMonth"></p>
+		<div class="sk-datePicker-ym">
+			<select class="sk-datePicker-ylist" data-event="change>setYear">
+				<% for (var i=today.year-100; i<=today.year+50; i++){ %>
+					<option value="{i}" {if i==this.year} selected="selected" {/if}>{i}年</option>
+				<% } %>
+			</select>
+			<select class="sk-datePicker-mlist" data-event="change>setMonth">
+				<% for(var i=1; i<=12; i++){ %>
+				<option value="{i}" {if i==this.month} selected="selected" {/if}>{i}月</option>
+				<% } %>
+			</select>
+		</div>
+		<p class="sk-datePicker-right" data-event="goNextMonth"></p>
+	</div>
+	<ul class="sk-datePicker-xq"><li>周日</li><li>周一</li><li>周二</li><li>周三</li><li>周四</li><li>周五</li><li>周六</li></ul>
+    <%
+    	var dayHTML = [];
+		for(var i=1; i<=this.day; i++){
+			dayHTML.push('<li>&nbsp;</li>');
+		}
+        for(var i=1; i<=this.days; i++){
+        	dayHTML.push('<li data-event="setDate" ');
+        	if(selected.year==this.year&&selected.month==this.month&&selected.date==i){
+        		dayHTML.push(' class="selectedday"');
+        	}else if(today.year==this.year&&today.month==this.month&&today.date==i){
+        		dayHTML.push(' class="today"');
+        	}
+        	dayHTML.push('>'+i+'</li>');
+        } 
+		dayHTML = dayHTML.join("");
+    %>
+    <ul class="sk-datePicker-dlist">{dayHTML}</ul>
+</div>

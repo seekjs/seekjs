@@ -1,0 +1,10 @@
+
+.sk-tip{
+    width: 80%;
+    height: 20%;
+    position: fixed;
+    top:40%;
+    left: 40%;
+    z-index: 1000;
+    background-color: #458CFB;
+}

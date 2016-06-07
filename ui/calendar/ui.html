@@ -1,0 +1,32 @@
+﻿<%
+	var today = this.today;
+%>
+<div class="sk-calendar" data-event="swipeleft>setMonth:-1;swiperight>setMonth:1">
+	<% var ymlist = [this.prevYm,this.ym,this.nextYm]; %>
+	{foreach from=ymlist}
+	<% var y=item[0]; var m=item[1]; %>
+	<div class="sk-calendar-wrap">
+		<div class="sk-calendar-head">
+			<p class="sk-calendar-left" data-event="setMonth:-1"></p>
+			<div class="sk-calendar-ym">
+				<select class="sk-calendar-ylist" data-event="change>setYear">
+					{foreach start=today.year-100 end=today.year+50}
+					<option value="{i}" {if i==y} selected="selected" {/if}>{i}年</option>
+					{/foreach}
+				</select>
+				<select class="sk-calendar-mlist" data-event="change>setMonth">
+					{foreach start=1 end=12}
+					<option value="{i}" {if i==m} selected="selected" {/if}>{i}月</option>
+					{/foreach}
+				</select>
+			</div>
+			<p class="sk-calendar-right" data-event="setMonth:1"></p>
+		</div>
+		<ul class="sk-calendar-xq"><li>周日</li><li>周一</li><li>周二</li><li>周三</li><li>周四</li><li>周五</li><li>周六</li></ul>
+		<ul class="sk-calendar-dlist">{foreach start=1 end=this.day}<li>&nbsp;</li>{/foreach}{foreach start=1 end=this.days}<li
+			{if this.date==i} class="selectedday"
+			{elseif this.year==y&&m==today.month&&i==today.date}  class="today"
+			{/if}>{i}</li>{/foreach}</ul>
+	</div>
+	{/foreach}
+</div>

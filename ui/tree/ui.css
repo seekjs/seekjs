@@ -1,0 +1,95 @@
+﻿.sk-tree,
+.sk-tree ul{
+    margin:0;
+    padding:0;
+    list-style:none;
+    padding-left:18px;
+    font-size:12px;
+}
+
+.sk-tree ul{
+    display:none;
+}
+
+.sk-tree ul.line{
+    background: url(line_conn.gif) 0 0 repeat-y;
+}
+
+.sk-tree ul li{
+    padding:0;
+    margin:0;
+}
+
+.sk-tree b{
+	background-image:url(standard.png);
+    width:16px;
+    height:16px;
+    margin-right:2px;
+    display:inline-block;
+    vertical-align:top;
+}
+
+.sk-tree i{
+	background-image:url(standard.png);
+    width:18px;
+    height:18px;
+    display:inline-block;
+}
+
+.sk-tree div{
+    height:18px;
+}
+
+.sk-tree span{
+    display:inline-block;
+    line-height:16px;
+    vertical-align:top;
+}
+
+.sk-tree-group{
+	background-position:-110px 0;
+}
+
+.sk-tree-group-first-add{
+	background-position:-74px 0;
+}
+
+.sk-tree-group-first-sub{
+	background-position:-92px 0;
+}
+
+.sk-tree-group-mid-add{
+	background-position:-74px -18px;
+}
+
+.sk-tree-group-mid-sub{
+	background-position:-92px -18px;
+}
+
+.sk-tree-group-end-add{
+	background-position:-74px -36px;
+}
+
+.sk-tree-group-end-sub{
+	background-position:-92px -36px;
+}
+
+.sk-tree-group-sub{
+	background-position:-92px -18px;
+}
+
+.sk-tree-item{
+	background-position:-110px -32px;
+}
+
+.sk-tree-item-first{
+	background-position:-56px -18px;
+}
+
+.sk-tree-item-mid{
+	background-position:-56px -18px;
+}
+
+.sk-tree-item-end{
+	background-position:-56px -36px;
+}

@@ -1,0 +1,16 @@
+﻿<div class="sk-mask" data-level="{this.level}">
+	<div class="sk-mask-bg" style="
+		opacity: {this.opacity};
+		background-color: {this.bg};
+	"></div>
+	<div class="sk-mask-text" style="
+	    {if this.color}
+		color: {this.color};
+		{/if}
+		{if this.pic}
+		background-image: url({this.pic});
+		background-repeat: no-repeat;
+		background-position: center center;
+		{/if}
+	">{this.text}</div>
+</div>
