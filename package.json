@@ -1,6 +1,6 @@
 {
     "name": "seekjs",
-    "version": "1.0.6",
+    "version": "1.0.7",
     "description": "seekjs前端框架",
     "main": "bin/seek.js",
     "author": {
