@@ -112,7 +112,7 @@ define(function (req, app) {
             app.container = document.createElement("div");
             document.body.appendChild(app.container);
         }
-        app.boxWidth = (window.innerWidth > 0) ? window.innerWidth : screen.width;//document.body.offsetWidth;
+        app.boxWidth = (window.innerWidth > 0 && window.innerWidth<screen.width) ? window.innerWidth : screen.width;//document.body.offsetWidth;
         app.boxHeight = (window.innerHeight > 0) ? window.innerHeight : screen.height;
         app.$container = $(app.container);
         app.useAnimate && transfer.init(app);
