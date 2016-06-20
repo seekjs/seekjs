@@ -21,11 +21,11 @@
                 </div>
             </div>
             <div class="sk-dialog-btn">
-                {if this.hasOk}
-                <div class="sk-dialog-ture" data-event="pickOk">{this.okText}</div>
-                {/if}
                 {if this.hasCancel}
                 <div class="sk-dialog-cancel"  data-event="pickCancel">{this.cancelText}</div>
+                {/if}
+                {if this.hasOk}
+                <div class="sk-dialog-ture" data-event="pickOk">{this.okText}</div>
                 {/if}
                 {foreach from=this.buttons}
                 <div class="sk-dialog-cancel"  data-event="pickButton:{i}">{item}</div>
