@@ -13,7 +13,8 @@
 
 define(function (req, exp) {
 	"use strict";
-	var $ = req("sys.query");  //主要用于bind和unbind
+	var $ = req("sys.lib.zepto");  //主要用于bind和unbind
+	var env = req("sys.env");
 	
 	//两段分隔符
 	var split2 = function (str, flag) {
@@ -43,6 +44,9 @@ define(function (req, exp) {
 				}
 				var ma = split2(ema[1], ":");
 				var e = ema[0];
+				if(!env.isMobile && e=="tap"){
+					e = "click";
+				}
 				var m = ma[0].split(".");
 				var scope = Scope;
 				while (m.length > 1) {
