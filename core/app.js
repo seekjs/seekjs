@@ -10,14 +10,9 @@ define(function (req, app) {
     var event = req("sys.event");
     var env = req("sys.env");
     var tp = req("sys.template");
-    var grid = req("sys.grid");
-    var ajax = req("sys.query").ajax; //暂时用JQ
-    var $$ = req("sys.format");
-    var obj = req("sys.object");
-    var str = req("sys.string");
-    var $$$ = req("sys.query");
     var transfer = req("sys.transfer");
-    var $ = req("sys.query_new");
+    var filter = req("sys.filter");
+    var $ = req("sys.lib.zepto");
 
     var context = {};
     var subviewList = [];
@@ -47,14 +42,14 @@ define(function (req, app) {
 
     //设置语言(默认中文)
     app.setLang = function (ops) {
-        app.langList = $$.langList = ops.list;
+        app.langList = filter.langList = ops.list;
         app.switchLang(ops.index);
     };
 
     //切换语言
     app.switchLang = function (key) {
-        app.langName = $$.langName = key;
-        app.lang = $$.lang = app.langList[key];
+        app.langName = filter.langName = key;
+        app.lang = filter.lang = app.langList[key];
     };
 
     //设置路径(默认当前路径)
@@ -104,7 +99,7 @@ define(function (req, app) {
     //程序初始化
     app.init = function (page, container) {
         app.inipage = page;
-	    obj.merge($$, app.formatEx);
+	    filter.mergeObj(filter, app.filterEx);
 
         if (container){
             app.container = document.querySelector(container);
@@ -175,7 +170,7 @@ define(function (req, app) {
     //主view之间的跳转
     //go 可传多个参数
     app.go = function (page) {
-        page = str.format.apply(str, [].slice.call(arguments));
+        page = filter.stringFormat.apply(filter, [].slice.call(arguments));
         prevUri = location.hash.replace("#","");
         //location.hash = "#" + page;
         app.isTry = true;
@@ -248,8 +243,8 @@ define(function (req, app) {
         var jsFile = app.getPath(ops, "js");
         req(jsFile, function (view) {
             if (view) {
-                obj.merge(view, ops);
-                obj.merge(view, app.viewEx);
+                filter.mergeObj(view, ops);
+                filter.mergeObj(view, app.viewEx);
                 view.id = ops.id || ops.pathname;
                 view.dir = ops.dir;
 				view.uri = ops.uri;
@@ -275,7 +270,7 @@ define(function (req, app) {
                         view.params = {id: params[0]};
                     }
                     else{
-                        view.params = obj.deserialize(params);
+                        view.params = filter.deserialize(params);
                     }
                 }
                 app.parseView(view);
@@ -369,8 +364,8 @@ define(function (req, app) {
 
     //修复IOS下微信Title不更新的Bug
     app.repairTitle = function(){
-        var $body = $$$('body');
-        var $iframe = $$$('<iframe src = "/favicon.ico"></iframe>').on('load', function() {
+        var $body = $('body');
+        var $iframe = $('<iframe src = "/favicon.ico"></iframe>').on('load', function() {
             setTimeout(function() {
                 $iframe.off('load').remove();
             }, 0)
@@ -387,7 +382,7 @@ define(function (req, app) {
                 document.title = view.title;
                 app.useRepair && app.repairTitle();
             }
-            $$.view = view; //注意$.view只能用在主view上
+            filter.view = view; //注意$.view只能用在主view上
 
             var ps = JSON.parse(sessionStorage.seekjs_app_pages || '[]');
             var index = ps.indexOf(view.uri);
@@ -413,7 +408,7 @@ define(function (req, app) {
     app.loadTemplate = function (view) {
         var templateFile = view.templateFile || app.getPath(view, "tp");
         templateFile = seekjs.resolve(templateFile);
-        ajax({
+        $.ajax({
             type: "get",
             dataType: "text",
             url: templateFile,
@@ -468,7 +463,7 @@ define(function (req, app) {
         view.ui = ui;
         view.$ui = $(ui);
         view.$ui.css("overflow")=="hidden" && view.$ui.height(app.boxHeight);
-        app.usegrid && grid.use(view.ui);
+        //app.usegrid && grid.use(view.ui); 暂时去掉
     };
 
     //解析模板2

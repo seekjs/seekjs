@@ -5,11 +5,7 @@
 
 define(function (req, exp) {
 	"use strict";
-    var str = req("sys.string");
-
-    var $ = req("sys.format");
-    $.obj = req("sys.object");
-    $.str = str;
+    var $ = req("sys.filter");
 	$.local = localStorage;
 	$.session = sessionStorage;
 
@@ -75,7 +71,7 @@ define(function (req, exp) {
 
 
 			} else if (s0 == "loop") {
-				jscode.push(str.format("for(var {0}={1}; {0}<={2}; {0}++){", aa[0], aa[2], aa[4]));
+				jscode.push(filter.stringFormat("for(var {0}={1}; {0}<={2}; {0}++){", aa[0], aa[2], aa[4]));
 			} else if (s0 == "/loop") {
 				jscode.push("}");
 
@@ -135,7 +131,7 @@ define(function (req, exp) {
 			} else {
 				addHTML(code);
 			}
-		}
+		};
 
 		compileLiteral(tmpCode);
 

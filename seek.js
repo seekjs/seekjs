@@ -317,7 +317,7 @@
             fullUri = seekjs.rootPath + RegExp.$1;
 			//系统路径
 		} else if (/^sys\.(\w+)$/.test(uri)) {
-			fullUri = seekjs.sysPath + RegExp.$1;
+			fullUri = seekjs.sysPath + "core/" + RegExp.$1;
             //系统UI路径
 		} else if (/^sys\.ui\.(\w+)\.?([\w\.]+)?$/.test(uri)) {
 			var uiExt = RegExp.$2 || "js";

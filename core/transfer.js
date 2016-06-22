@@ -5,7 +5,7 @@
 //针对seajs
 define(function (req, exp) {
     "use strict";
-    var $ = req("sys.query_new");
+    var $ = req("sys.lib.zepto");
     var move = req("sys.lib.move");
 
     //初始化
@@ -22,7 +22,7 @@ define(function (req, exp) {
 
     //设置面板样式
     exp.setPanelStyle = function (obj) {
-        $(obj).css("position","absolute").css("minHeight","100%").left(0).top(0).width(exp.boxWidth);
+        $(obj).css({position:"absolute", minHeight: "100%", left:0, top:0}).width(exp.boxWidth);
     };
 
     //移动
@@ -33,11 +33,11 @@ define(function (req, exp) {
         exp.setPanelStyle(newPanel);
 
         if(dir=="forward") {
-            $oldPanel.left(0);
-            $newPanel.left(exp.boxWidth);
+            $oldPanel.css("left",0);
+            $newPanel.css("left",exp.boxWidth+"px");
         }else if(dir=="back") {
-            $oldPanel.left(exp.boxWidth);
-            $newPanel.left(0);
+            $oldPanel.css("left",exp.boxWidth+"px");
+            $newPanel.css("left",0);
         }
 
         var startX = ({forward: 0, back: -exp.boxWidth})[dir];
@@ -51,11 +51,13 @@ define(function (req, exp) {
                 $oldPanel.remove();
                 */
                 //为避免操作过快引起的bug,改为批量删除
-                $(exp.box.children).dataset("status","del");
-                $newPanel.dataset("status","old");
+                exp.$box.children().each(function(){
+                    this.dataset.status = "del";
+                });
+                newPanel.dataset.status = "old";
                 $("[data-status=del]",exp.box).remove();
 
-                $newPanel.left(0);
+                $newPanel.css("left",0);
                 move(exp.box).duration(0).x(0).end();
                 exp.$box.width(exp.boxWidth);
                 if(newPanel.style.height!="100%"){

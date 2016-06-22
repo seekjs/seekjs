@@ -4,7 +4,7 @@
 
 define(function (req, exp, module) {
 	"use strict";
-    var obj = req("sys.object");
+    var filter = req("sys.filter");
 
     //默认设置
     var mod = exp.model = {
@@ -26,7 +26,7 @@ define(function (req, exp, module) {
 		if(typeof ops=="string"){
 			mod.text = ops;
 		}
-		obj.merge(mod, ops);
+		filter.mergeObj(mod, ops);
         mod.pic = ops.loading ? exp.pic.loading : "";
 		//this.text && obj.css("line-height", this.args.box.height()+"px");
 

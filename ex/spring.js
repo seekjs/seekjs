@@ -2,15 +2,7 @@
 define(function(req, exp, mod){
     "use strict";
     var move = req("sys.lib.move");
-    var $$ = req("sys.query");
-
-    //对象查询
-    var $ = function(obj, box){
-        if(typeof obj=="object"){
-            return obj;
-        }
-        return (box||document.body).querySelector(obj);
-    };
+    var $ = req("sys.lib.zepto");
 
     //上下折叠
     mod.exports = function(ops){
@@ -37,7 +29,7 @@ define(function(req, exp, mod){
             icon.style.webkitTransform = "rotate(90deg)";
         }
 
-        $$(tab).off().on("click", function(){
+        $(tab).off().on("click", function(){
             var h = +getComputedStyle(panel).height.replace("px","");
             if(Math.ceil(h)==Math.ceil(maxH)){
                 move(panel).set("height", minH).end();

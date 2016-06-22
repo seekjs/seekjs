@@ -4,7 +4,7 @@
 
 define(function (req, exp) {
 	"use strict";
-    var obj = req("sys.object");
+    var filter = req("sys.filter");
 
 	var mod = exp.model = {
         title: "提示",
@@ -72,7 +72,7 @@ define(function (req, exp) {
 
     //显示对话框
     exp.showDialog = function(ops){
-        obj.merge(mod, ops);
+        filter.mergeObj(mod, ops);
         mod.onOk = ops.onOk || null;
         mod.onCancel = ops.onCancel || null;
         exp.show();
