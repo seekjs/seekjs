@@ -78,7 +78,7 @@
     display: inline-block;
     border-bottom-right-radius:0.7rem;
     width: 49%;
-    box-shadow: -1px 0 0 0 #E5E8E8;
+    /*box-shadow: -1px 0 0 0 #E5E8E8;*/
 
 }
 .sk-dialog-ture{
