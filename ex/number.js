@@ -18,15 +18,15 @@ define(function(req, exp){
     };
 
     exp.gbk = function(num){
-        return ex.lang(num,"gbk");
+        return exp.lang(num,"gbk");
     };
 
     exp.big = function(num){
-        return ex.lang(num,"big");
+        return exp.lang(num,"big");
     };
 
     exp.eng = function(num){
-        return ex.lang(num,"eng");
+        return exp.lang(num,"eng");
     };
 
     //数字转中文(0-99之间)

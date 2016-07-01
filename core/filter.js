@@ -432,7 +432,7 @@ define(function (req, exp) {
 
 
     //合并对象
-    exp.mergeObj = function (This, ops) {
+    exp.merge = exp.mergeObj = function (This, ops) {
         for (var k in ops) {
             This[k] = ops[k];
         }

@@ -401,11 +401,22 @@
 	seekjs.sysPath = getLastScript().src.replace(/[^\/]+$/, "");
 	seekjs.rootPath = location.href.replace(/#.*$/,"").replace(/[^\/]+$/,"");
 
-	var mainPath = getLastScript().dataset.main;
-	if(mainPath){
+	var ds = getLastScript().dataset;
+	if(ds.main){
 		window.onload = function() {
-			seekjs.use(mainPath);
+			seekjs.use(ds.main);
 		}
-	}
+	}else if(ds.page){
+        var arr_page = ds.page.split("/");
+        var viewPath = arr_page[1] ? seekjs.resolve("./"+arr_page[0]+"/") : seekjs.resolve("./");
+        var iniPage = arr_page[1] || arr_page[0];
+        window.onload = function() {
+            seekjs.require("sys.app", function(app){
+                app.mode = "singleFile";
+                app.sg.setPath(viewPath);
+                app.sg.init(iniPage);
+            });
+        }
+    }
 
 }(this);

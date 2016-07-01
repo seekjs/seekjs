@@ -12,6 +12,7 @@ define(function (req, app) {
     var tp = req("sys.template");
     var transfer = req("sys.transfer");
     var filter = req("sys.filter");
+    var ex = filter;
     var $ = req("sys.lib.zepto");
 
     var context = {};
@@ -22,7 +23,7 @@ define(function (req, app) {
     app.lang = "zh-cn";
     app.useStyle = true;
     app.viewEx = {};
-    app.formatEx = {};
+    app.filterEx = {};
     app.plugin = {};
     app.usegrid = true;
     app.useAnimate = false;
@@ -39,6 +40,22 @@ define(function (req, app) {
     app.langList = {};
     app.langName = "";
     app.lang = {};
+
+    //添加到View公用方法
+    app.add2view = function(ops){
+        if(typeof ops=="string"){
+            ops = req(ops);
+        }
+        ex.merge(app.viewEx, ops);
+    };
+
+    //添加到模板过滤方法
+    app.add2filter = function(ops){
+        if(typeof ops=="string"){
+            ops = req(ops);
+        }
+        ex.merge(app.filterEx, ops);
+    };
 
     //设置语言(默认中文)
     app.setLang = function (ops) {
@@ -616,6 +633,19 @@ define(function (req, app) {
             o.box.style.display = "none";
             return o;
         };
+    };
+
+    //单文件模式
+    var sk = req("sys.sk");
+    app.sg = {
+        setPath: function(path){
+            this.path = path;
+        },
+        init: function(file){
+            sk.getCode(this.path+file+".sk", function(code){
+                console.log(JSON.stringify(code,null,4));
+            });
+        }
     };
 
 });

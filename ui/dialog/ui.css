@@ -76,8 +76,13 @@
 .sk-dialog-cancel{
     text-align: center;
     display: inline-block;
-    border-bottom-right-radius:0.7rem;
+    /*border-bottom-right-radius:0.7rem;*/
     width: 49%;
+    /*box-shadow: -1px 0 0 0 #E5E8E8;*/
+
+    border-bottom-left-radius: 0.7rem;
+    box-shadow: 0 0 1px 0 #E5E8E8;
+
 
 }
 .sk-dialog-ture{

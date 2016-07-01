@@ -5,7 +5,7 @@
 */
 define(function (req, exp, mod) {
 	"use strict";
-	var str = req("sys.string");
+	var ex = req("sys.filter");
     var re = /\w+|[\u4e00-\u9fa5]+|\\\/\/|\/\/|\/\*|\*\/|\{\}|\[\]|\(\)|\(\{|\}\)|.|\n|\t/g;
 
 	//着色
@@ -14,7 +14,7 @@ define(function (req, exp, mod) {
 			"blue": /\b(var|new|function|return|typeof|if|else|switch|case|default|for|in|break|continue|do|while|try|catch|this|true|false)\b/g
 		};
 		for (var k in colors) {
-			code = code.replace(colors[k], str.format('<font color="{0}">{1}</font>', k, "$1"));
+			code = code.replace(colors[k], ex.stringFormat('<font color="{0}">{1}</font>', k, "$1"));
 		}
 		return code;
 	};
