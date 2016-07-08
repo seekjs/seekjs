@@ -642,8 +642,12 @@ define(function (req, app) {
             this.path = path;
         },
         init: function(file){
-            sk.getCode(this.path+file+".sk", function(code){
-                console.log(JSON.stringify(code,null,4));
+            sk.getCode(this.path+file+".sk", function(factory){
+                console.log(factory);
+                var mid = "js." + file;
+                seekjs.modules[mid] = {};
+                define(mid, factory);
+                app.go(file);
             });
         }
     };

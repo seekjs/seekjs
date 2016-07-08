@@ -7,23 +7,21 @@ define(function(req, exp){
 
     //获取源码
     exp.getCode = function(filename, callback) {
-        var o = {
-            js: "",
-            tp: "",
-            st: ""
-        };
+        var tp = "";
+        var st = "";
+        var js = "";
         seekjs.loadText(filename, function(rs){
-            alert(rs.text);
-            rs.text.replace(/<script>([\s\S]+?)<\/script>/i, function(_,code){
-                o.js = 'define(function(req,exp,mod){' + code.trim() + '});';
-            });
             rs.text.replace(/<template>([\s\S]+?)<\/template>/i, function(_,code){
-                o.tp = code.trim();
+                tp = code.trim().replace(/\r|\n/g,"");
             });
             rs.text.replace(/<style>([\s\S]+?)<\/style>/i, function(_,code){
-                o.st = code.trim();
+                st = code.trim().replace(/\r|\n/g,"");
             });
-            callback(o);
+            rs.text.replace(/<script>([\s\S]+?)<\/script>/i, function(_,code){
+                js = 'exp.templateHTML=\'' + tp + '\'; exp.cssText=\'' + st + '\'; ' + code.trim();
+            });
+            var factory = new Function("req", "exp", "mod", js);
+            callback(factory);
         });
     };
 

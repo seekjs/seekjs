@@ -6,10 +6,10 @@ define(function(req, exp, mod){
 
     //上下折叠
     mod.exports = function(ops){
-        var box = $(ops.box);
-        var tab = $(ops.tab||ops.icon, box);
-        var panel = $(ops.panel, box);
-        var icon = $(ops.icon, box);
+        var box = $(ops.box)[0];
+        var tab = $(ops.tab||ops.icon, box)[0];
+        var panel = $(ops.panel, box)[0];
+        var icon = $(ops.icon, box)[0];
 
         var minH = 0;
         var maxH = ops.h || 0;
