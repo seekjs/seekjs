@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿<%
     var list = this.list;
 %>
@@ -21,4 +22,29 @@
         </tr>
         {/foreach}
     </tbody>
+=======
+﻿<%
+    var list = this.list;
+%>
+<table width="80%">
+    <caption>{list.title}</caption>
+    <thead>
+        <tr>
+            {foreach from=list.keys key=key}
+            <th data-event="sort:{key}">
+                {item}{if this.key==key}{if this.dir=="asc"}<i>↑</i>{else}<i>↓</i>{/if}{/if}
+            </th>
+            {/foreach}
+        </tr>
+    </thead>
+    <tbody>
+        {foreach from=list.data item=rs}
+        <tr>
+            {foreach from=rs key=key}
+            <td>{item}</td>
+            {/foreach}
+        </tr>
+        {/foreach}
+    </tbody>
+>>>>>>> 6382325fea1fe1d8e6bef0179fd4fe255bd1d004
 </table>

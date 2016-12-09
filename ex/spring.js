@@ -6,8 +6,13 @@ define(function(req, exp, mod){
 
     //上下折叠
     mod.exports = function(ops){
+<<<<<<< HEAD
         var box = $(ops.box);
         var tab = $(ops.tab||ops.icon, box);
+=======
+        var box = $(ops.box)[0];
+        var tab = $(ops.tab||ops.icon, box)[0];
+>>>>>>> 6382325fea1fe1d8e6bef0179fd4fe255bd1d004
         var panel = $(ops.panel, box)[0];
         var icon = $(ops.icon, box)[0];
 

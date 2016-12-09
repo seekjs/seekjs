@@ -1,6 +1,10 @@
 {
     "name": "seekjs",
+<<<<<<< HEAD
     "version": "1.2.8",
+=======
+    "version": "2.0.0",
+>>>>>>> 6382325fea1fe1d8e6bef0179fd4fe255bd1d004
     "description": "seekjs前端框架",
     "author": {
         "name": "Li",
@@ -10,4 +14,8 @@
     "scripts": {
         "genui": "node bin/genui.js"
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 6382325fea1fe1d8e6bef0179fd4fe255bd1d004

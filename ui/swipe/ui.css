@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .sk-slides{
 
 }
@@ -11,4 +12,19 @@
 	width:50px;
 	height:100px;
 	background:url(arrow-right.png) no-repeat center center;
+=======
+.sk-slides{
+
+}
+
+.sk-slides-left{
+	width:50px;
+	height:100px;
+	background:url(arrow-left.png) no-repeat center center;	
+}
+.sk-slides-right{
+	width:50px;
+	height:100px;
+	background:url(arrow-right.png) no-repeat center center;
+>>>>>>> 6382325fea1fe1d8e6bef0179fd4fe255bd1d004
 }
