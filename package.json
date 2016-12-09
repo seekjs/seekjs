@@ -1,0 +1,13 @@
+{
+    "name": "seekjs",
+    "version": "1.2.8",
+    "description": "seekjs前端框架",
+    "author": {
+        "name": "Li",
+        "email": "61114579@qq.com"
+    },
+    "bin": "./bin/cli.js",
+    "scripts": {
+        "genui": "node bin/genui.js"
+    }
+}

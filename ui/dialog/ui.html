@@ -1,0 +1,39 @@
+<div class="sk-dialog-position">
+    <div>
+        <div class="sk-dialog">
+
+           <div class="sk-dialog-top">
+                <div class="sk-dialog-tit">
+                    <strong>{this.title}</strong>
+                </div>
+               {if this.hasClose}
+               <div class="sk-dialog-close" data-event="hide"></div>
+               {/if}
+            </div>
+
+            <div class="sk-dialog-cont">
+                <div class="sk-dialog-txt" >
+                    {if this.url==""}
+                    <p>{this.text}</p>
+                    {else}
+                    <iframe src="{this.url}"></iframe>
+                    {/if}
+                </div>
+            </div>
+            <div class="sk-dialog-btn">
+                {if this.hasCancel}
+                <div class="sk-dialog-cancel"  data-event="pickCancel">{this.cancelText}</div>
+                {/if}
+                {if this.hasOk}
+                <div class="sk-dialog-ture" data-event="pickOk">{this.okText}</div>
+                {/if}
+                {foreach from=this.buttons}
+                <div class="sk-dialog-cancel"  data-event="pickButton:{i}">{item}</div>
+                {/foreach}
+            </div>
+            <div class="sk-com-clear"></div>
+        </div>
+
+    </div>
+    <div class="sk-dialog-bg"></div>
+</div>

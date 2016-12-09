@@ -1,0 +1,40 @@
+
+.ui-pagination{
+    display: inline-block;
+    text-align: center;
+}
+
+.ui-pagination li{
+    display: inline-block;
+    border: 1px solid #e5e5e5;
+    color: #fff;
+    width: 25px;
+    height: 25px;
+    line-height: 25px;
+    cursor: pointer;
+    border-radius: 3px;
+    font-size: 14px;
+    margin: 0 2px;
+    background-color: #e5e5e5;
+    text-align: center;
+}
+
+.ui-pagination li.cur{
+    background: #FA7832;
+    color:#fff;
+    cursor: default;
+}
+
+.ui-pagination li.prev{
+    border: none;
+    background: #FA7832;
+}
+
+.ui-pagination li.next{
+    border: none;
+    background: #FA7832;
+}
+
+.ui-pagination li.dot{
+    cursor: default;
+}

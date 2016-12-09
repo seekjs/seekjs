@@ -1,0 +1,46 @@
+<%
+    var startIndex = Math.max(this.pageIndex - 5, 1);
+    var endIndex = Math.min(this.pageIndex + 5 + 5-(this.pageIndex-startIndex), this.pageCount);
+%>
+<ul class="ui-pagination">
+    {if this.pageCount>1}
+
+        {if this.pageIndex>1}
+            <li class="prev" data-event="goto:{this.pageIndex-1}">{this.prevTitle}</li>
+        {/if}
+
+        {if startIndex>1}
+            <li data-event="goto:1">1</li>
+        {/if}
+
+        {if startIndex>2}
+            <li class="dot">...</li>
+        {/if}
+
+        {foreach start=startIndex end=endIndex}
+            {if i==this.pageIndex}
+                <li class="cur">{i}</li>
+            {else}
+                <li data-event="goto:{i}">{i}</li>
+            {/if}
+        {/foreach}
+
+        {if endIndex+1<this.pageCount}
+            <li class="dot">...</li>
+        {/if}
+
+        {if endIndex<this.pageCount}
+            <li data-event="goto:{this.pageCount}">{this.pageCount}</li>
+        {/if}
+
+        {if this.pageIndex<this.pageCount}
+            <li class="next" data-event="goto:{this.pageIndex+1}">{this.nextTitle}</li>
+        {/if}
+
+        {if this.hasJump}
+            <label>跳到第<input class="ui-page-box" type="number" data-bind="jumpPage" data-event="keyup>justNum"/>页</label>
+            <div class="ui-page-btn" data-event="jumpPag">确定</div>
+        {/if}
+
+    {/if}
+</ul>

@@ -1,0 +1,27 @@
+﻿
+    table{
+      border-collapse: collapse;
+      margin:0 auto;
+    }
+    caption{
+        line-height: 50px;
+    }
+    thead{
+        line-height: 40px;
+    }
+    thead th{
+        cursor:pointer;
+    }
+    tbody tr:nth-child(even){
+        background:#eee;
+    }
+    th, td {
+        text-align: center;
+        border: 1px solid #666;
+        width: 20%;
+    }
+    th i{
+        color:#e00;
+        font-style:normal;
+        font-weight:normal;
+    }
